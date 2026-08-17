@@ -96,7 +96,7 @@ PM 根据 `docs/architecture.md` 的模块分解和 `docs/project-status.md` 的
 
 ### 3.2 PM 派发任务卡
 
-**手工模式（默认）**：PM 产出派发文本块（角色身份 + 任务卡完整内容），由用户粘贴到对应角色对话；角色完成后在对话按固定格式回报，用户转述给 PM 触发验收。
+**手工模式（fallback）**：PM 产出派发文本块（角色身份 + 任务卡完整内容），由用户粘贴到对应角色对话；角色完成后在对话按固定格式回报，用户转述给 PM 触发验收。
 
 **自动化模式（DSH 已实测，默认启用）**：见 `docs/dsh-capabilities.md`。DSH 宿主用 `subagent` 一步派发（身份+任务卡）稳定送达，编排驱动见 `docs/dsh-pm-driver.md`；Codex 等宿主 spawn/followup 无法稳定送达，退回手工模式。
 
