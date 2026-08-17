@@ -1,0 +1,24 @@
+name: framework-check
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 框架一致性校验（validate-framework）
+        shell: pwsh
+        run: .\scripts\validate-framework.ps1
+
+      - name: 框架巡检（patrol，含密钥扫描与依赖检查）
+        shell: pwsh
+        run: .\scripts\patrol.ps1
+
+      - name: 框架自测（framework-selftest，零依赖）
+        shell: pwsh
+        run: .\scripts\tests\framework-selftest.ps1
